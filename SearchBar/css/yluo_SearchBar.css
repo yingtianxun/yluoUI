@@ -1,0 +1,31 @@
+input,button{
+	padding: 0;
+	margin: 0;
+	outline:none;
+	font: "微软雅黑";
+}
+.searchBarInput{
+	width: 143px;
+	height: 26px;
+	padding-left: 2px;
+	padding-right: 2px;
+	background: #f6f6f6;
+	border: none;
+	border-left: 1px solid #cfcfcf;
+	border-bottom: 1px solid #cfcfcf;
+	border-top: 1px solid #cfcfcf;
+	vertical-align: top;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.searchBarBtn{
+	font-family: '微软雅黑';
+	font-size: 12;
+	height: 28px;
+	width: 52px;
+	background:#3ab8af;
+	border: none;
+	color: #ffffff;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="publish">发布信息</button>
+		<script type="text/javascript" src="./js/yluo_Event.js" ></script>
+		<script>
+			yluo_Event.Subscribe("test",function(data){
+				alert(data)
+			});
+			yluo_Event.Subscribe("test",function(data){
+				alert(2222)
+			});
+			var oBtn = document.getElementById("publish")
+			oBtn.onclick = function(){
+				yluo_Event.Publish("test","asdasda");
+				
+			}
+		</script>
+	</body>
+</html>

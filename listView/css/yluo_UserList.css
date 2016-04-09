@@ -1,0 +1,84 @@
+.yluo_user_list_ul,
+.yluo_user_list_li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.yluo_user_list_li {
+	position: relative;
+	height: 50px;
+	padding: 5px 5px 10px 5px;
+	border-bottom: 1px solid #EBEBEC;
+	font-family: 微软雅黑;
+	font-size: 12px;
+}
+
+.yluo_user_list_li:hover {
+	background: #FCF0C1;
+}
+
+.yluo_user_list_li .cover {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+}
+
+.yluo_user_list_li .portrait {
+	float: left;
+	margin-right: 20px;
+}
+
+.yluo_user_list_li .portrait img {
+	width: 50px;
+}
+
+.yluo_user_list_li .description {
+	float: left;
+	padding: 5px;
+	font-size: 13px;
+}
+
+.yluo_user_list_li .description span:nth-child(2) {
+	margin-top: 8px;
+	display: block;
+}
+
+.yluo_user_list_li button {
+	position: absolute;
+	display: none;
+	right: 30px;
+	top: 20px;
+	outline: none;
+	font-family: 微软雅黑;
+	font-size: 12px;
+	border: 1px solid #3bbbb1;
+	background: #fcfcfc;
+	border-radius: 4px;
+	color: #3bbbb1;
+	z-index: 4;
+}
+
+.yluo_user_list_li .state_freeze {
+	background: red;
+	color: #FFFFFF;
+	border-radius: 6px;
+	padding: 0px 6px 1px 6px;
+}
+
+.yluo_user_list_li .state_normal {
+	background: #3ebbb1;
+	color: #FFFFFF;
+	border-radius: 6px;
+	padding: 0px 6px 1px 6px;
+}
+
+.yluo_user_list_li .state_noactive {
+	background: #17b4eb;
+	color: #FFFFFF;
+	border-radius: 6px;
+	padding: 0px 6px 1px 6px;
+}

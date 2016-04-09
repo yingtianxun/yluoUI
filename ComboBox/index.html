@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="./yluo_ScrollView.css" />
+		<style>
+			.yluo_comboBox {
+				position: relative;
+				margin: 30px auto;
+				width: 180px;
+				font-family: "微软雅黑";
+				font-size: 12px;
+				color: #33363F;
+				z-index: 0;
+			}
+			
+			.yluo_comboBox ul,
+			.yluo_comboBox li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.yluo_comboBox .tag{
+				float: left;
+				margin-right: 10px;
+				height: 24px;
+				line-height: 24px;
+			}
+			.yluo_comboBox_head {
+				line-height: 22px;
+				position: relative;
+				float: left;
+				height: 22px;
+				width: 82px;
+				right: 0;
+				border: 1px solid #cfcfcf;
+				border-radius: 4px;
+				background: #f6f6f6;
+				z-index: 1;
+			}
+			
+			.yluo_comboBox_input {
+				padding: 0 4px;
+				border: none;
+				outline: none;
+				background: #f6f6f6;
+			}
+			
+			.yluo_comboBox_arrow {
+				position: absolute;
+				line-height: 22px;
+				padding: 0;
+				margin: 0;
+				right: 4px;
+				width: 11px;
+				height: 7px;
+			}
+			
+			.yluo_comboBox_body {
+				position: absolute;
+				display: none;
+				top: 24px;
+				width: 64px;
+				height: 0;
+				border-radius: 4px;
+				border: 1px solid #cfcfcf;
+				overflow: hidden;
+				transition: height .5s;
+				z-index: 1;
+			}
+			
+			.yluo_comboBox_body ul {
+				width: 64px;
+				background: #f6f6f6;
+			}
+			
+			.yluo_comboBox_body li {
+				width: 100%;
+				padding: 2px;
+				background: #f6f6f6;
+			}
+			
+			.yluo_comboBox_body li:hover {
+				background: #FFF5CC;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="testChangeHeight">测试改变高度的动画</button>
+		
+		<div class="yluo_comboBox">
+			<span class="tag">标签测试</span>
+			<div class="yluo_comboBox_head">
+				<input class="yluo_comboBox_input" type="text" value="19" />
+				<span class="yluo_comboBox_arrow">
+					<img  src="./img/arrowDown.png" />
+				</span>
+			</div>
+			<div class="yluo_comboBox_body">
+				<ul>
+				</ul>
+			</div>
+		</div>
+
+	
+
+		<script type="text/javascript" src="yluo_AddEvent.js"></script>
+		<script type="text/javascript" src="yluo_ScrollView.js"></script>
+		<script>
+			var oComboBox = document.querySelector(".yluo_comboBox");
+			var oComboBoxInput = oComboBox.querySelector(".yluo_comboBox_input");
+			var oComboBoxArrow = oComboBox.querySelector(".yluo_comboBox_arrow");
+			var oComboBoxhead = oComboBox.querySelector(".yluo_comboBox_head");
+			var oComboBoxBody = oComboBox.querySelector(".yluo_comboBox_body");
+			var oComboBoxUl = oComboBoxBody.querySelector("ul");
+			
+			oComboBoxBody.style.left = (oComboBoxhead.offsetLeft + 2) + 'px';
+			
+			var isShow = false;
+			for (var i = 0; i < 20; i++) {
+				var oLi = document.createElement("li");
+				oLi.index = i;
+				oLi.innerHTML = i;
+				oComboBoxUl.appendChild(oLi);
+			}
+			oComboBoxUl.onclick = function(event) {
+				var oLi = event.target;
+				if (oLi.index !== undefined) {
+					oComboBoxInput.value = oLi.innerHTML;
+					oComboBoxBody.style.height = "0";
+					yluo_DomHandle.addEvent(oComboBoxBody, 'transitionend', hideComboBody);
+				}
+			}
+			var oComboBoxInputWidth = oComboBoxhead.clientWidth - 20;
+			oComboBoxInput.style.width = oComboBoxInputWidth + "px";
+			oComboBoxInput.style.height = (oComboBoxhead.clientHeight - 4) + "px";
+			var oScroller = new yluo_ScrollView({
+				obj: oComboBoxBody,
+				showHorizontal: false
+			});
+
+			function showComboBody() {
+				oScroller.resize();
+				yluo_DomHandle.removeEvent(oComboBoxBody, 'transitionend', showComboBody);
+				isShow = true;
+				oComboBox.onmouseleave = function() {
+					oComboBoxBody.style.height = "0";
+					yluo_DomHandle.addEvent(oComboBoxBody, 'transitionend', hideComboBody);
+				}
+			}
+
+			function hideComboBody() {
+				yluo_DomHandle.removeEvent(oComboBoxBody, 'transitionend', hideComboBody);
+				oComboBoxBody.style.display = "none";
+				oComboBox.onmouseleave = null; //  这里注销一下就OK了
+				isShow = false;
+			}
+			oComboBoxArrow.onclick = function() {
+				if (!isShow) {
+					oComboBoxBody.style.display = "block";
+					oScroller.resize();
+					oComboBoxBody.style.height = "100px";
+					yluo_DomHandle.addEvent(oComboBoxBody, 'transitionend', showComboBody);
+				} else {
+					oComboBoxBody.style.height = "0";
+					yluo_DomHandle.addEvent(oComboBoxBody, 'transitionend', hideComboBody);
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="./css/yluo_checkBox.css" />
+	</head>
+	<body>
+		
+		<div id="yluo_checkBox" class="yluo_checkBox"></div>
+		
+		<script type="text/javascript" src="./js/yluo_checkBox.js" ></script>
+		<script>
+			new yluo_checkBox({
+				id : "yluo_checkBox",
+				content : "测试1",
+				callback : function(isCheck) {
+					alert(isCheck)
+				}
+			});
+		</script>
+	</body>
+</html>

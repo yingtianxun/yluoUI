@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="./yluo_ScrollView.css" />
+		<link rel="stylesheet" href="./yluo_DataGrid.css" />
+		<style>
+			body {
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			
+	
+		</style>
+
+	</head>
+
+	<body>
+
+	
+		<div id="outerFrame" style="width: 500px;height: 500px;margin: 0 auto 10px auto;">
+			<div id="dataGridTest" class="yluo_datagrid ">
+
+			</div>
+		</div>
+		<button id="testAddRowBtn">添加行测试</button>
+		<button id="testDelRowBtn">删除行测试</button>
+		<button id="testDelAllRowBtn">全部删除</button>
+		<button id="testDelArrRowBtn">数组删除测试</button>
+		<button id="testScrollBtn">滚动测试</button>
+		<button id="changeSize">变小测试</button>
+		<button id="changeSizeBig">变大测试</button>
+		<button id="getSelIndexBtn">获取索引测试</button>
+		
+		<button id="selectAllBtn">选择全部测试</button>
+		<button id="selecRowBtn">选择单行测试</button>
+		
+		<button id="deselecRowBtn">取消选择单行测试</button>
+		
+		<script src="yluo_AddEvent.js"></script>
+		<script src="yluo_ScrollView.js"></script>
+		<script src="yluo_DataGrid.js"></script>
+		<script>
+	
+			var dataGridTest = new yluo_dataGrid({
+				id: 'dataGridTest',
+				checkCol : true,
+				cols: [{
+					title: 'id',
+					name: 'id',
+					width: 60,
+				}, {
+					title: '产品编号',
+					name: 'productNO',
+					width: 200,
+					renderer : function(data,rowIndex){
+					
+//						var oBtn = document.createElement('button');
+//						
+//						oBtn.innerHTML = '测试而已';
+//						
+//						oBtn.onclick = function(event){
+//							console.log(rowIndex)
+//							event.stopPropagation();
+//						}
+						
+						return data + '------' + rowIndex ;
+					}
+				}, {
+					title: '产品名',
+					name: 'productName',
+					width: 140,
+				}, {
+					title: '在线人数',
+					name: 'onlineNum',
+					width: 100,
+				}]
+			});
+			var dataArr = [];
+			for (var i = 0; i < 10; i++) {
+				dataArr.push({
+					'id': i,
+					'productNO': 245745485745,
+					'productName': '剑三藏剑',
+					'onlineNum': '10',
+				});
+			}
+			dataGridTest.insertRows(dataArr);
+			
+			var oAddRowBtn = document.getElementById('testAddRowBtn');
+			var oDelRowBtn = document.getElementById('testDelRowBtn');
+			var oDelAllRowBtn = document.getElementById('testDelAllRowBtn');
+			var oDelArrRowBtn = document.getElementById('testDelArrRowBtn');
+			var oScrollBtn = document.getElementById('testScrollBtn');
+			var oChangeSizeBtn = document.getElementById('changeSize');
+			var oOuterFrame = document.getElementById('outerFrame');
+			var oChangeSizeBigBtn = document.getElementById('changeSizeBig');
+			var getSelIndexBtn = document.getElementById('getSelIndexBtn');
+			var selectAllBtn = document.getElementById('selectAllBtn'); 
+			var selecRowBtn = document.getElementById('selecRowBtn'); 
+			var deselecRowBtn = document.getElementById('deselecRowBtn'); 
+			
+			oAddRowBtn.onclick = function(){
+			
+				dataGridTest.insertRow({
+					'id': 555,
+					'productNO': 245745485745,
+					'productName': '剑三藏剑',
+					'onlineNum': '10',
+				});
+			}
+			
+			oDelRowBtn.onclick = function(){
+			
+				dataGridTest.removeRow(5);
+			}
+			oDelAllRowBtn.onclick = function(){
+			
+				dataGridTest.removeAll();
+			}
+			oDelArrRowBtn.onclick = function(){
+				dataGridTest.removeRows([0,5,6,7]);
+			};
+			oScrollBtn.onclick = function(){
+				dataGridTest.scrollToRow(423);
+			};
+			oChangeSizeBtn.onclick = function(){
+				oOuterFrame.style['width'] = '300px';
+				oOuterFrame.style['height'] = '200px';
+				dataGridTest.resize();
+			};
+			oChangeSizeBigBtn.onclick = function(){
+				oOuterFrame.style['width'] = '600px';
+				oOuterFrame.style['height'] = '600px';
+				dataGridTest.resize();
+			};
+			getSelIndexBtn.onclick = function(){
+				console.log(dataGridTest.selectedRowsIndex());
+			}
+			selectAllBtn.onclick = function(){
+				dataGridTest.selectAllRow()
+			}
+			selecRowBtn.onclick = function(){
+				dataGridTest.selectRow(1)
+			}
+			deselecRowBtn.onclick = function(){
+				dataGridTest.deSelectRow(1)
+			}
+			
+			
+		</script>
+	</body>
+
+</html>

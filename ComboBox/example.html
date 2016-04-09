@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="./yluo_ScrollView.css" />
+		<link rel="stylesheet" href="./yluo_ComboBox.css" />
+		<style>
+			#testChangeHeight {
+				margin-bottom: 100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="testChangeHeight">测试改变高度的动画</button>
+
+		<div id="yluo_comboBox" class="yluo_comboBox">
+
+		</div>
+
+		<script type="text/javascript" src="yluo_AddEvent.js"></script>
+		<script type="text/javascript" src="yluo_ScrollView.js"></script>
+		<script type="text/javascript" src="yluo_ComboBox.js"></script>
+		<script>
+		
+			var comboBox = new yluo_ComboBox({
+				id: 'yluo_comboBox',
+				tagName: "测试而已",
+				items : [1,2,3,4,5,6,7,8,9,"日"],
+				callback: function(index) {
+					console.log(index)
+				}
+			});
+//			for (var i = 0; i < 20; i++) {
+//				comboBox.insertLi(i);
+//			}
+//			comboBox.setCurIndex(0);
+		</script>
+	</body>
+
+</html>

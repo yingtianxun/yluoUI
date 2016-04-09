@@ -1,0 +1,10 @@
+.yluo_checkBox {
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+.yluo_checkBox img{
+	position: relative;
+	top: 2px;
+	margin-right: 8px;
+	border: none;
+}

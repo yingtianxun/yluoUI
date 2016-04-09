@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				background: gray;
+			}
+			
+			.yluo_scrollView {
+				position: relative;
+				width: 500px;
+				height: 500px;
+				margin: 50px auto;
+				background: white;
+				overflow: hidden;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			
+			.yluo_scrollView_leftBar {
+				position: absolute;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 8px;
+				background: wheat;
+				z-index: 10;
+			}
+			
+			.yluo_scrollView_leftBar .drop {
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: 20px;
+				background: red;
+			}
+			
+			.yluo_scrollView_bottomBar {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 8px;
+				background: wheat;
+				z-index: 10;
+			}
+			
+			.yluo_scrollView_bottomBar .drop {
+				height: 100%;
+				width: 20px;
+				background: red;
+			}
+			
+			.yluo_scrollView_content {
+				position: absolute;
+				width: 600px;
+				height: 600px;
+				background: green;
+				border: 1px solid #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="yluo_scrollView">
+			<div class="yluo_scrollView_leftBar">
+				<div class="drop"></div>
+			</div>
+			<!--<div class="yluo_scrollView_bottomBar">
+				<div class="drop"></div>
+			</div>-->
+			<div class="yluo_scrollView_content">
+				sdfsdfsdf
+			</div>
+		</div>
+		<script src="./js/yluo_AddEvent.js"></script>
+		<script>
+		
+		
+		
+			var oLeftBar = document.querySelector('.yluo_scrollView_leftBar');
+			var oLeftDrop = document.querySelector('.yluo_scrollView_leftBar .drop');
+			var oBody = document.querySelector('body');
+			var oScrollView = document.querySelector('.yluo_scrollView');
+			
+			var oSrollViewContent =  document.querySelector('.yluo_scrollView_content');
+						
+			
+			var OutSpanHeight = oSrollViewContent.offsetHeight - oScrollView.offsetHeight
+						
+			// 缩减比例
+			var leftDropHeightScale = OutSpanHeight / oScrollView.offsetHeight;
+	
+			var leftDropHeight = leftDropHeightScale * oSrollViewContent.offsetHeight;
+			
+			oLeftDrop.style["height"] = leftDropHeight + 'px';
+			
+			var leftDropY = 0;
+		
+			var oLeftDropScrollSpan = oLeftBar.offsetHeight - oLeftDrop.offsetHeight; // 左边滚动块最大的移动范围
+								
+			var oLeftMouseMove = function(event) {		
+				var leftDropNewOffsetTop = oLeftDrop.offsetTop + (event.clientY - leftDropY); // 将要移动到的位置,当前滚动条的位置		
+				if (leftDropNewOffsetTop < 0) {
+					leftDropNewOffsetTop = 0;
+				} else if (leftDropNewOffsetTop > oLeftDropScrollSpan) {
+					leftDropNewOffsetTop = oLeftDropScrollSpan;
+				}
+				oLeftDrop.style['top'] = leftDropNewOffsetTop + 'px';
+				
+				var contentScrollDist = - (leftDropNewOffsetTop / oLeftDropScrollSpan) * OutSpanHeight;
+				
+				oSrollViewContent.style['top'] = contentScrollDist + 'px';
+				
+				leftDropY = event.clientY;
+			};
+			var oLeftMouseUpHandle = function() {
+				// 收尾工作的
+				yluo_DomHandle.removeEvent(oBody, 'mousemove', oLeftMouseMove);
+				yluo_DomHandle.removeEvent(oBody, 'mouseup', oLeftMouseUpHandle);
+				yluo_DomHandle.removeEvent(oBody, 'mouseleave', oLeftMouseUpHandle);
+			};
+			var cancleLeftDropEvent = function() {
+				oLeftMouseUpHandle(); // 取消监听事件
+			};
+			var registeLeftDropEvent = function() {
+				yluo_DomHandle.addEvent(oBody, 'mousemove', oLeftMouseMove);
+				// 后面要移除的
+				yluo_DomHandle.addEvent(oBody, 'mouseup', oLeftMouseUpHandle);
+				yluo_DomHandle.addEvent(oBody, 'mouseleave', oLeftMouseUpHandle);
+			}
+			oLeftDrop.onmousedown = function(event) {
+				leftDropY = event.clientY; // 保存点击的鼠标							
+				registeLeftDropEvent();
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,24 @@
+.yluo_radioBtn {
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: rgb(51, 54, 63);
+}
+
+.yluo_radioBtn ul,
+.yluo_radioBtn li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.yluo_radioBtn li {
+	margin-bottom: 5px;
+	/*float: left;*/
+}
+
+.yluo_radioBtn img {
+	position: relative;
+	border: none;
+	top: 1px;
+	margin-right: 4px;
+}

@@ -1,0 +1,77 @@
+	.yluo_comboBox {
+		position: relative;
+		font-family: "微软雅黑";
+		font-size: 12px;
+		color: #33363F;
+		z-index: 0;
+	}
+	
+	.yluo_comboBox ul,
+	.yluo_comboBox li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		cursor: default;
+	}
+	
+	.yluo_comboBox .tag {
+		float: left;
+		margin-right: 10px;
+		height: 24px;
+		line-height: 24px;
+	}
+	
+	.yluo_comboBox_head {
+		position: relative;
+		float: left;
+		width: 82px;
+		right: 0;
+		border: 1px solid #cfcfcf;
+		border-radius: 4px;
+		background: #f6f6f6;
+		z-index: 1;
+	}
+	
+	.yluo_comboBox_input {
+		padding: 0 4px;
+		border: none;
+		outline: none;
+		background: #f6f6f6;
+	}
+	
+	.yluo_comboBox_arrow {
+		position: absolute;
+		line-height: 22px;
+		padding: 0;
+		margin: 0;
+		right: 4px;
+		width: 11px;
+		height: 7px;
+	}
+	
+	.yluo_comboBox_body {
+		position: absolute;
+		display: none;
+		width: 64px;
+		height: 0;
+		border-radius: 4px;
+		border: 1px solid #cfcfcf;
+		overflow: hidden;
+		transition: height .5s;
+		z-index: 1;
+	}
+	
+	.yluo_comboBox_body ul {
+		width: 64px;
+		background: #f6f6f6;
+	}
+	
+	.yluo_comboBox_body li {
+		
+		padding: 2px;
+		background: #f6f6f6;
+	}
+	
+	.yluo_comboBox_body li:hover {
+		background: #FFF5CC;
+	}

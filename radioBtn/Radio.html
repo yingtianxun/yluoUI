@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="./css/yluo_radioBtn.css" />
+	</head>
+
+	<body>
+
+		<div class="yluo_radioBtn" id="yluo_checkBox"></div>
+
+		<script type="text/javascript" src="./js/yluo_radioBtn.js"></script>
+		<script>
+			new yluo_radioBox({
+				index: 0,
+				id: "yluo_checkBox",
+				Content: ["测试1", "测试2", "测试3", "测试3"],
+				name: "test",
+				marginRight: "30px",
+				float: "left",
+				callback: function(index) {}
+			});
+		</script>
+	</body>
+
+</html>

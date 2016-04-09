@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="./yluo_ScrollView.css" />
+		<link rel="stylesheet" href="./css/yluo_UserList.css" />
+		<style>
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+			}
+			.left_body {
+				width: 300px;
+				height: 600px;
+				border: 1px solid #DEDEDE;
+				position: relative;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="left_body" style="display: none;">
+			<div id="userListScrollView" >
+				<ul>
+					<li class="yluo_user_list_li">
+						<div class="portrait">
+							<img src="./img/userIco.png" style="width: 50px;" />
+						</div>
+						<div class="description">
+							<span>账号: <span class="account">x87648510</span></span>
+							<span>状态: 
+						<span class="state_noactive">未激活</span>
+							</span>
+						</div>
+						<button>查看详情</button>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+		<div id="testUserList" class="left_body">
+
+		</div>
+		<script type="text/javascript" src="./yluo_AddEvent.js"></script>
+		<script type="text/javascript" src=".//yluo_ScrollView.js"></script>
+		<script type="text/javascript" src="./js/yluo_UserList.js"></script>
+		<script>
+		
+		var userTest = new yluo_UserList({
+				id: "testUserList",
+				showHorizontal : false,
+				callback : function(account){
+					alert(account)
+				}
+			});		
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.insertRow({
+				img: "./img/userIco.png",
+				account: "x876485101",
+				state: 1
+			});
+			userTest.resize();
+
+		</script>
+	</body>
+
+</html>

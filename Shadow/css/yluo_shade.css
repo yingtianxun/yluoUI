@@ -1,0 +1,38 @@
+.yluo_shade {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 10;
+}
+
+.yluo_shade .yluo_shade_background {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: #000000;
+	opacity: 0.2;
+	z-index: 10;
+}
+
+.yluo_shade .yluo_shade_loadPage {
+	position: absolute;
+	margin-left: -30px;
+	left: 50%;
+	top: 30%;
+	background: url(../img/loading-0.gif);
+	width: 60px;
+	height: 24px;
+}
+
+.yluo_shade .yluo_shade_content {
+	position: absolute;
+	margin-top: 25px;
+	left: 50%;
+	top: 30%;
+	color: #000;
+	font-family: "微软雅黑";
+}

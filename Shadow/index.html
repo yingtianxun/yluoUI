@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="./css/yluo_shade.css" />
+		<style>
+			.test {
+				margin: 0 auto;
+				position: relative;
+				width: 600px;
+				height: 600px;
+				border: 1px solid #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="test">
+			<div id="CoverPageTest"></div>
+		</div>
+		<button id="TestClose">关闭</button>
+		<button id="TestShow">显示</button>
+		<script>
+			var yluo_shade = (function() {
+				function _getStyle(obj, attr) {
+					if (obj.currentStyle) {
+						_getStyle = function() {
+							return obj.currentStyle[attr];
+						};
+					} else {
+						_getStyle = function() {
+							return getComputedStyle(obj, null)[attr];
+						};
+					}
+					return _getStyle();
+				}
+				function Shade(param) {
+					this.param = param;
+					this.oShade = document.getElementById(param.id);
+					this._initLayout();
+					this._initEvent();
+				}
+				Shade.prototype._initLayout = function() {
+					this.oShade.className = "yluo_shade";
+					this.oBackground = document.createElement("div");
+					this.oLoadPage = document.createElement("div");
+					this.oContent = document.createElement("div");
+					this.oBackground.className = 'yluo_shade_background';
+					this.oLoadPage.className = 'yluo_shade_loadPage ';
+					this.oContent.className = 'yluo_shade_content ';
+					this.oContent.innerHTML = this.param.content;
+					this.oShade.appendChild(this.oBackground);
+					this.oShade.appendChild(this.oLoadPage);
+					this.oShade.appendChild(this.oContent);
+					this.oContent.style.marginLeft =
+						(-(parseFloat(_getStyle(this.oContent, "width")) / 2)) + "px";
+				};
+				Shade.prototype._initEvent = function() {};
+				Shade.prototype.Show = function() {
+					this.oShade.style.display = "block";
+				};
+				Shade.prototype.Hide = function() {
+					this.oShade.style.display = "none";
+				};
+				return Shade;
+			}());
+			var fuck =  new yluo_shade({
+				id: 'CoverPageTest',
+				content: "玩命加载中..."
+			});
+			var TestClose =  document.getElementById("TestClose");
+			TestClose.onclick = function() {
+				fuck.Hide();
+			}
+			var TestShow = document.getElementById("TestShow");
+			TestShow.onclick =  function() {
+				fuck.Show();
+			}
+			
+		</script>
+	</body>
+
+</html>

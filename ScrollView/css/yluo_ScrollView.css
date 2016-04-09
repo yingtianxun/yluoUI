@@ -1,0 +1,49 @@
+	.yluo_scrollView {
+		position: relative;
+		overflow: hidden;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	
+	.yluo_scrollView_leftBar {
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: 8px;
+		background: wheat;
+		z-index: 10;
+	}
+	
+	.yluo_scrollView_leftBar .drop {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 20px;
+		background: red;
+		cursor: default;
+	}
+	
+	.yluo_scrollView_bottomBar {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 8px;
+		background: wheat;
+		z-index: 10;
+	}
+	
+	.yluo_scrollView_bottomBar .drop {
+		position: absolute;
+		height: 100%;
+		width: 20px;
+		background: red;
+		cursor: default;
+	}
+	
+	.yluo_scrollView_content {
+		position: absolute;
+	}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/yluo_Paginator.css" />
+		<style>
+			.out {
+				margin: 0 auto;
+				height: 36px;
+				width: 900px;
+				background: #DEDEDE;
+			}
+			
+	
+		</style>
+	</head>
+
+	<body>
+		<div class="out">
+			<div class="yluo_Paginator">
+				<span class="itemTotalNum">记录总数:<span>100</span></span>
+				<span class="pageNum">共<span>5</span>页</span>
+				<span class="firstPage">第一页</span>
+				<img src="./img/prePageIco.gif" class="prePage">
+				<input class="curShowPage" type="text" value="1" />
+				<img src="./img/nextPageIco.gif" class="nextPage" />
+				<span class="lastPage">最后页</span>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="out">
+			<div id="testPaginator">
+
+			</div>
+		</div>
+		<script type="text/javascript" src="js/yluo_Paginator.js" ></script>
+		<script>
+
+			var example = new yluo_Paginator({
+				id: "testPaginator",
+				height: "36px",
+				ItemNum: 10061, // 当前的总数量
+				pageShowNum: 20, //每一页显示的数量
+				onPageChange: function(index, showNum) {
+				}
+			});
+			//			Padfads.setItemNum(1000);
+		</script>
+	</body>
+
+</html>

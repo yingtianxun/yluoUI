@@ -1,0 +1,40 @@
+.yluo_sliderBanner {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.yluo_sliderBanner .indexBtn {
+	position: absolute;
+	border: none;
+	outline: none;
+	width: 16px;
+	height: 29px;
+	top: 50%;
+	margin-top: -18.5px;
+}
+
+.yluo_sliderBanner .preBtn {
+	left: 0;
+	background: url(../img/preBtn.png);
+}
+
+.yluo_sliderBanner .nextBtn {
+	right: 0;
+	background: url(../img/nextBtn.png);
+}
+
+.yluo_sliderBanner ul {
+	position: relative;
+	padding: 0;
+	margin: 0;
+}
+
+.yluo_sliderBanner li {
+	padding: 0;
+	margin: 0;
+	float: left;
+	list-style: none;
+	background: red;
+	overflow: hidden;
+}
